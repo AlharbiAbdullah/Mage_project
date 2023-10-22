@@ -2,12 +2,12 @@ version: '3'
 services:
   #Mage
   mage:
-    image: mageai/mageai:latest
+    #image: mageai/mageai:latest
     command: mage start ${PROJECT_NAME}
     env_file:
       - .env
     build:
-      context: .
+      context: ./mage
       dockerfile: Dockerfile
     environment:
       USER_CODE_PATH: /home/src/${PROJECT_NAME}
@@ -15,7 +15,7 @@ services:
     ports:
       - 6789:6789
     volumes:
-      - .:/home/src/
+      - ./mage/:/home/src/
     restart: on-failure:5
 
     # Postgres 
@@ -23,6 +23,9 @@ services:
     image: postgres:12.4
     ports:
       - 5432:5432
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
     env_file:
       - .env
     environment:
@@ -31,6 +34,10 @@ services:
        POSTGRES_DB: ${POSTGRES_DB}
        PGDATA: /var/lib/postgresql/data 
     volumes:
-      - ./postgres/:/var/lib/postgresql/data
+      - ./postgres/data/:/var/lib/postgresql/data
+      - ./postgres/sql_files/:/var/lib/postgres_sqlfiles
+    command: psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f /var/lib/postgres_sqlfiles/${SQL_FILE}
+
+
 
 
