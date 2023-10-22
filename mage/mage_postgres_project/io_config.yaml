@@ -67,11 +67,11 @@ default:
   MYSQL_USER: root
   # PostgresSQL
   POSTGRES_CONNECT_TIMEOUT: 10
-  POSTGRES_DBNAME: postgres
-  POSTGRES_SCHEMA: public # Optional
-  POSTGRES_USER: username
-  POSTGRES_PASSWORD: password
-  POSTGRES_HOST: hostname
+  POSTGRES_DBNAME: northwind
+  POSTGRES_SCHEMA: null # Optional
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: abdullah
+  POSTGRES_HOST: postgresql
   POSTGRES_PORT: 5432
   # Redshift
   REDSHIFT_SCHEMA: public # Optional

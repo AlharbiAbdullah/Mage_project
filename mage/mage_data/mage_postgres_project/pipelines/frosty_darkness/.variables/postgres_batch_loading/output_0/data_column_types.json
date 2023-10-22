@@ -1,0 +1,1 @@
+{"customer_id": "str", "company_name": "str", "contact_name": "str", "contact_title": "str", "address": "str", "city": "str", "region": "str", "postal_code": "str", "country": "str", "phone": "str", "fax": "str", "new_column": "str", "_mage_created_at": "datetime64[ns, UTC]", "_mage_updated_at": "datetime64[ns, UTC]"}

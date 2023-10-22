@@ -1,0 +1,1 @@
+{"survived": "int64", "pclass": "int64", "_name": "str", "age": "float64", "sex": "str", "embarked": "str"}

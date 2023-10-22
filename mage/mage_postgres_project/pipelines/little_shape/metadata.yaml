@@ -1,0 +1,61 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - exporting_to_postgres
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: loading_from_API
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: loading_from_api
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: default
+    data_provider_schema: API_Data
+    data_provider_table: API_TABLE
+    dbt: {}
+    export_write_policy: append
+    limit: 1000
+    use_raw_sql: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: exporting_to_postgres
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - loading_from_api
+  uuid: exporting_to_postgres
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2023-10-22 16:13:44.673909+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: little shape
+notification_config: {}
+retry_config: {}
+run_pipeline_in_one_process: false
+spark_config: {}
+tags: []
+type: python
+updated_at: '2023-10-22 16:21:57'
+uuid: little_shape
+widgets: []

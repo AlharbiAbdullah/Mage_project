@@ -21,11 +21,10 @@ services:
     # Postgres 
   postgresql:
     image: postgres:12.4
+    restart: always
     ports:
       - 5432:5432
-    build:
-      context: ./postgres
-      dockerfile: Dockerfile
+
     env_file:
       - .env
     environment:
@@ -34,9 +33,8 @@ services:
        POSTGRES_DB: ${POSTGRES_DB}
        PGDATA: /var/lib/postgresql/data 
     volumes:
-      - ./postgres/data/:/var/lib/postgresql/data
-      - ./postgres/sql_files/:/var/lib/postgres_sqlfiles
-    command: psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f /var/lib/postgres_sqlfiles/${SQL_FILE}
+      - ./postgres/sql_files:/var/lib/postgres_sqlfiles
+      - ./postgres/sql_files/northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
 
 
 
